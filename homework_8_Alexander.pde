@@ -4,7 +4,8 @@ Flower myFlower3;
 Flower myFlower4;
 Flower myFlower5;
 boolean switchColor = false;
-int incrementos = 1;
+int increment = 1;
+int circleSpace = 50;
 
 void setup() {
   size(1200, 900);
@@ -39,25 +40,32 @@ void draw() {
   myFlower2.display();
   myFlower2.move();
   myFlower2.bounce();
-  myFlower3.display();
-  myFlower3.move();
-  myFlower3.bounce();
-  myFlower4.display();
-  myFlower4.move();
-  myFlower4.bounce();
+//  myFlower3.display();
+  //myFlower3.move();
+  //myFlower3.bounce();
+ // myFlower4.display();
+  //myFlower4.move();
+  //myFlower4.bounce();
 
   myFlower5.mouseControl(mouseX, mouseY);
 
-  if (myFlower3.overlaps(myFlower2) || myFlower1.overlaps(myFlower2) || myFlower3.overlaps(myFlower2)) {
-    for (int i = 0; i <= incrementos; i = i + 50) {
-      ellipse(i, 100, 50, 50);
+  //Når de forskellige blomster overlapper så stiger increment
 
-      incrementos++;
-    }
-  } else {
-    incrementos = 0;
+  if (myFlower1.overlaps(myFlower2) || myFlower1.overlaps(myFlower3) || myFlower1.overlaps(myFlower4)|| myFlower1.overlaps(myFlower5) || myFlower2.overlaps(myFlower3) || myFlower2.overlaps(myFlower4)|| myFlower2.overlaps(myFlower5) || myFlower3.overlaps(myFlower4)|| myFlower3.overlaps(myFlower5)) {
+    increment++;
   }
 
+  text("Score " + increment, 50, 50);
+
+  //Der kommer en ny circel hver increment når 50. Da i kun bliver increased med circleSpace = 50.
+  for (int i = 0; i <= increment; i = i + circleSpace) {
+    ellipse(i, 100, 50, 50);
+  }
+
+  println(increment);
+  if (increment >= circleSpace*10) {
+    increment= 0;
+  }
 
 
   if (mousePressed) {
