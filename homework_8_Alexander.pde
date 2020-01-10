@@ -40,12 +40,12 @@ void draw() {
   myFlower2.display();
   myFlower2.move();
   myFlower2.bounce();
-//  myFlower3.display();
-  //myFlower3.move();
-  //myFlower3.bounce();
- // myFlower4.display();
-  //myFlower4.move();
-  //myFlower4.bounce();
+  myFlower3.display();
+  myFlower3.move();
+  myFlower3.bounce();
+  myFlower4.display();
+  myFlower4.move();
+  myFlower4.bounce();
 
   myFlower5.mouseControl(mouseX, mouseY);
 
