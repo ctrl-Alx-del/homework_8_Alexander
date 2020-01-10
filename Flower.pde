@@ -1,7 +1,8 @@
 class Flower {
 
   // Variables
-  float speed; //Der blev lavet en speed variable så man kunne flytte på blomsten og sætte den til forskellig hastighed
+  float Xspeed; //Der blev lavet en speed variable så man kunne flytte på blomsten og sætte den til forskellig hastighed
+  float Yspeed;
   float ballX;
   float ballY;
   float rectX;
@@ -15,32 +16,35 @@ class Flower {
   int size;
 
   //Circular Flower
-  Flower(float temp_r, int temp_n_petals, float temp_x, float temp_y, int temp_petalColor, float temp_speed) {
+  Flower(float temp_r, int temp_n_petals, float temp_x, float temp_y, int temp_petalColor, float temp_Xspeed, float temp_Yspeed) {
     r=temp_r;
     n_petals = temp_n_petals;
     x=temp_x;
     y=temp_y;
     petalColor=temp_petalColor;
-    speed = temp_speed;
+    Xspeed = temp_Xspeed;
+    Yspeed = temp_Yspeed;
   }
 
   //Mouse-controlled flower
-  Flower(float temp_r, int temp_n_petals, int temp_x, int temp_y, int temp_petalColor, float temp_speed) {
+  Flower(float temp_r, int temp_n_petals, int temp_x, int temp_y, int temp_petalColor, float temp_Xspeed, float temp_Yspeed) {
     r=temp_r;
     n_petals = temp_n_petals;
     x=temp_x;
     y=temp_y;
     petalColor=temp_petalColor;
-    speed = temp_speed;
+    Xspeed = temp_Xspeed;
+    Yspeed = temp_Yspeed;
   }
 
   //Rectangular Flower
-  Flower(int temp_n_petals, float temp_x, float temp_y, int temp_petalColor, float temp_speed, int tempSize) {
+  Flower(int temp_n_petals, float temp_x, float temp_y, int temp_petalColor, float temp_Xspeed, int tempSize, float temp_Yspeed) {
     n_petals = temp_n_petals;
     x=temp_x;
     y=temp_y;
     petalColor=temp_petalColor;
-    speed = temp_speed;
+    Xspeed = temp_Xspeed;
+    Yspeed = temp_Yspeed;
     size = tempSize;
   }
 
@@ -72,13 +76,16 @@ class Flower {
   }
 
   void move(/*float speed*/) {
-    x = x + speed;
-    y = y + speed;
+    x = x + Xspeed;
+    y = y + Yspeed;
   }
 
   void bounce() {
-    if (x > width-r || x < r || y > height || y < 0) {
-      speed = speed * (-1);
+    if (x > width-r || x < r) {
+      Xspeed = Xspeed * (-1);
+    }
+    if(y > height || y < 0){
+      Yspeed = Yspeed * (-1);
     }
   }
 

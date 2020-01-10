@@ -4,9 +4,10 @@ Flower myFlower3;
 Flower myFlower4;
 Flower myFlower5;
 boolean switchColor = false;
+int incrementos = 1;
 
 void setup() {
-  size(1600, 1200);
+  size(1200, 900);
 
   int _r1= 60;
   int _r2 = 100;
@@ -19,20 +20,20 @@ void setup() {
   int offset = 350;
 
   //Regular flower
-  myFlower1 = new Flower(_r1, _petals, _x, _y, _pc, 2); 
-  myFlower2 = new Flower(_r2, _petals, _x+random(-500, 500), _y+offset, _pc, 5);
-  myFlower3 = new Flower(_r3, _petals, _x+50, _y-offset, _pc, 7);
-  myFlower5 = new Flower(_r5, _petals, _x+50, _y-offset, _pc, 7); 
+  myFlower1 = new Flower(_r1, _petals, _x, _y, _pc, 2, 2); 
+  myFlower2 = new Flower(_r2, _petals, _x+50, _y+offset, _pc, -5, 5);
+  myFlower3 = new Flower(_r3, _petals, _x+50, _y+offset, _pc, 7, 7);
+  myFlower5 = new Flower(_r5, _petals, _x+50, _y-offset, _pc, 7, 7); 
 
   //rectangular flower
-  myFlower4 = new Flower(_petals, _x+50, _y-offset/2, _pc, 7, 50);
+  myFlower4 = new Flower(_petals, _x+50, _y-offset/2, _pc, 7, 50, 7);
 }
 
 void draw() {
   background(#43AF76);
 
   myFlower1.display();
-  myFlower1.move();  //Denne løsning virkede ikke da den i draw hele tiden satte valuen af blomstens speed tilbage til 2 selv når den nåede til hvor den skulle "bounce", altså reverse sin speed.
+  myFlower1.move();  
   myFlower1.bounce();
   myFlower1.coloring();
   myFlower2.display();
@@ -47,16 +48,17 @@ void draw() {
 
   myFlower5.mouseControl(mouseX, mouseY);
 
-  if(myFlower3.overlaps(myFlower2)){
-   background(255,0,0); 
-  }
-  
-  println(myFlower5.overlaps2(myFlower2));
+  if (myFlower3.overlaps(myFlower2) || myFlower1.overlaps(myFlower2) || myFlower3.overlaps(myFlower2)) {
+    for (int i = 0; i <= incrementos; i = i + 50) {
+      ellipse(i, 100, 50, 50);
 
-  if(myFlower5.overlaps2(myFlower2)){
-    background(255,0,0);
+      incrementos++;
+    }
+  } else {
+    incrementos = 0;
   }
-    
+
+
 
   if (mousePressed) {
     switchColor = true;
