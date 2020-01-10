@@ -111,13 +111,6 @@ class Flower {
     ellipse(x, y, r*1.2, r*1.2);
   }
 
-  boolean overlaps2(Flower other) {
-    if (dist(x, y, other.x, other.y) < r/2) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 
   boolean overlaps (Flower other) {
     float distance = dist(x, y, other.x, other.y); 

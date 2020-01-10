@@ -62,7 +62,7 @@ void draw() {
     ellipse(i, 100, 50, 50);
   }
 
-  println(increment);
+ 
   if (increment >= circleSpace*10) {
     increment= 0;
   }
